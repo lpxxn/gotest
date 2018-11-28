@@ -1,0 +1,2 @@
+# gotest
+go test function
