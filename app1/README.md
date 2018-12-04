@@ -29,14 +29,16 @@ cd app1
 go test -v ./...
 ```
 
-coverage
+coverage test specify file
 ```
-cd src
-go test ./srctest/userinfo_test.go   -v -coverpkg=./
-or
-go test ./srctest/userinfo_test.go   -v -coverpkg ./
+cd app1
+go test -v -coverprofile cover.out ./api/user_test.go ./api/user.go
+go tool cover -html=cover.out -o cover.html
+```
 
-or
-go test ./srctest/...  -v -coverpkg ./ -coverprofile cover.out
+coverage test all file in package
+```
+cd app1
+go test -v -coverprofile cover.out ./api/...
 go tool cover -html=cover.out -o cover.html
 ```
