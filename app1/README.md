@@ -1,5 +1,11 @@
 # gotest
 
+specify test function
+```
+go test -v -run=TestGetOrderList
+go test -v -run="TestGetOrderList|TestNewUserInfo"
+```
+
 specify test file
 ```
 cd app1/api
@@ -13,10 +19,15 @@ go test -v utils/tool_test.go utils/tool.go
 
 test all file in package
 ```
-cd app1
+cd api
 go test -v
 ```
 
+test all subpackages recursively
+```
+cd app1
+go test -v ./...
+```
 
 coverage
 ```
