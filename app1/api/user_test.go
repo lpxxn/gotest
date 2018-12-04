@@ -24,7 +24,7 @@ func TestUserInfoList(t *testing.T) {
 }
 
 func TestHandleNewUser(t *testing.T) {
-	req, _ := http.NewRequest(http.MethodPost, "newUser", nil)
+	req := httptest.NewRequest(http.MethodPost, "http://localhost/createuser", nil)
 	w := httptest.NewRecorder()
 	HandleNewUser(w, req)
 
