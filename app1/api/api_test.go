@@ -12,5 +12,9 @@ func TestMain(m *testing.M) {
 	config.LoadConfig()
 	fmt.Printf("Env is %s\n", os.Getenv(config.ENV_STR))
 	fmt.Printf("config info %#v\n", config.ConfigInfo)
+
+	// do something... eg: init data
+	// ...
+
 	os.Exit(m.Run())
 }
