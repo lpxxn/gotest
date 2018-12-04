@@ -1,7 +1,7 @@
 package srctest
 
 import (
-	"github.com/lpxxn/gotest/src"
+	"github.com/lpxxn/gotest/app1/src1/src"
 	"testing"
 )
 
