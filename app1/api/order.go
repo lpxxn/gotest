@@ -1,22 +1,11 @@
 package api
 
-import "github.com/lpxxn/gotest/app1/utils"
+import "github.com/lpxxn/gotest/app1/model"
 
-type OrderInfo struct {
-	Id         int
-	TotalMoney int
-}
-
-func OrderById(id int) OrderInfo {
-	return OrderInfo{Id: id, TotalMoney: utils.RandomInt(10, 10000)}
-}
-
-type OrderInfoList []OrderInfo
-
-func GetOrderList() OrderInfoList {
-	oil := OrderInfoList{}
+func GetOrderList() model.OrderInfoList {
+	oil := model.OrderInfoList{}
 	for i := 0; i < 10; i++ {
-		oil = append(oil, OrderById(i))
+		oil = append(oil, model.OrderById(i))
 	}
 	return oil
 }
