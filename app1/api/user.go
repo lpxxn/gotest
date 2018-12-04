@@ -1,8 +1,10 @@
 package api
 
 import (
+	"encoding/json"
 	"github.com/lpxxn/gotest/app1/model"
 	"github.com/lpxxn/gotest/app1/utils"
+	"net/http"
 )
 
 func NewUserInfo() *model.UserInfo {
@@ -15,4 +17,13 @@ func UserInfoList() []*model.UserInfo {
 		userInfoList = append(userInfoList, NewUserInfo())
 	}
 	return userInfoList
+}
+
+
+func HandleNewUser(w http.ResponseWriter,r *http.Request) {
+	newUser := NewUserInfo()
+	jData, _ := json.Marshal(newUser)
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(jData)
 }
