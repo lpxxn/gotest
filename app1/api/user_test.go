@@ -2,9 +2,11 @@ package api
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/lpxxn/gotest/app1/model"
 	"net/http"
 	"net/http/httptest"
+	"runtime"
 	"testing"
 )
 
@@ -21,6 +23,23 @@ func TestUserInfoList(t *testing.T) {
 		t.Error("userInfoList is empty")
 	}
 	t.Logf("userInfoList len := %d\n", len(userInfoList))
+}
+
+func BenchmarkUserInfoList(b *testing.B) {
+	n := runtime.GOMAXPROCS(-1)
+	b.Log("cpu number : ", n)
+	b.StopTimer()
+	// do something
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		// pretend delay
+		//time.Sleep(time.Millisecond * 500)
+		userInfoList := UserInfoList()
+		if len(userInfoList) != 10 {
+			b.Error("userInfoList is empty")
+		}
+	}
+	fmt.Println("N: ", b.N)
 }
 
 func TestHandleNewUser(t *testing.T) {
@@ -41,4 +60,3 @@ func TestHandleNewUser(t *testing.T) {
 	}
 	t.Logf("create user api response : %#v", user)
 }
-

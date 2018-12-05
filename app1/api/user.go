@@ -19,8 +19,7 @@ func UserInfoList() []*model.UserInfo {
 	return userInfoList
 }
 
-
-func HandleNewUser(w http.ResponseWriter,r *http.Request) {
+func HandleNewUser(w http.ResponseWriter, r *http.Request) {
 	newUser := NewUserInfo()
 	jData, _ := json.Marshal(newUser)
 	w.WriteHeader(http.StatusOK)
