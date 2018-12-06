@@ -12,3 +12,8 @@ func (u *UserInfo) GetName() string {
 func (u *UserInfo) SetName(name string) {
 	u.Name = name
 }
+
+type UserRole struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+}

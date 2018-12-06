@@ -2,6 +2,8 @@ package testutils
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/jarcoal/httpmock"
+	"github.com/lpxxn/gotest/app2_thirdlib/utils"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -39,4 +41,8 @@ func newRequest(httpMethod string, url string, engine *gin.Engine, body io.Reade
 	w := httptest.NewRecorder()
 	engine.ServeHTTP(w, req)
 	return w, nil
+}
+
+func HttpMockActivateNonDefault() {
+	httpmock.ActivateNonDefault(utils.HttpClient)
 }
