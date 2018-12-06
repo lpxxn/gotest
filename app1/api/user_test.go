@@ -2,11 +2,11 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/lpxxn/gotest/app1/model"
 	"net/http"
 	"net/http/httptest"
-	"runtime"
+	"net/url"
+	"strings"
 	"testing"
 )
 
@@ -26,8 +26,6 @@ func TestUserInfoList(t *testing.T) {
 }
 
 func BenchmarkUserInfoList(b *testing.B) {
-	n := runtime.GOMAXPROCS(-1)
-	b.Log("cpu number : ", n)
 	b.StopTimer()
 	// do something
 	b.StartTimer()
@@ -39,11 +37,13 @@ func BenchmarkUserInfoList(b *testing.B) {
 			b.Error("userInfoList is empty")
 		}
 	}
-	fmt.Println("N: ", b.N)
 }
 
 func TestHandleNewUser(t *testing.T) {
-	req := httptest.NewRequest(http.MethodPost, "http://localhost/createuser", nil)
+	postBody := url.Values{}
+	postBody.Add("say", "hello world")
+	req := httptest.NewRequest(http.MethodPost, "http://localhost/createuser?name=linus", strings.NewReader(postBody.Encode()))
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	w := httptest.NewRecorder()
 	HandleNewUser(w, req)
 
