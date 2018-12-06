@@ -9,23 +9,22 @@ import (
 	"strings"
 )
 
-
 func GetRequst(url string, engine *gin.Engine, params ...func(r *http.Request)) (*httptest.ResponseRecorder, error) {
 	return newRequest(http.MethodGet, url, engine, nil, params...)
 }
 
-func PostJsonRequst(url string, engine *gin.Engine, body url.Values, params ...func(r *http.Request)) (*httptest.ResponseRecorder, error) {
+func PostJsonRequst(url string, engine *gin.Engine, body string, params ...func(r *http.Request)) (*httptest.ResponseRecorder, error) {
 	params = append(params, func(r *http.Request) {
 		r.Header.Set("Content-Type", "application/json")
 	})
-	return newRequest(http.MethodPost, url, engine, strings.NewReader(body.Encode()), params...)
+	return newRequest(http.MethodPost, url, engine, strings.NewReader(body), params...)
 }
 
-func PostFormRequst(url string, engine *gin.Engine, body string, params ...func(r *http.Request)) (*httptest.ResponseRecorder, error) {
+func PostFormRequst(url string, engine *gin.Engine, body url.Values, params ...func(r *http.Request)) (*httptest.ResponseRecorder, error) {
 	params = append(params, func(r *http.Request) {
 		r.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	})
-	return newRequest(http.MethodPost, url, engine, strings.NewReader(body), params...)
+	return newRequest(http.MethodPost, url, engine, strings.NewReader(body.Encode()), params...)
 }
 
 func newRequest(httpMethod string, url string, engine *gin.Engine, body io.Reader, params ...func(r *http.Request)) (*httptest.ResponseRecorder, error) {
