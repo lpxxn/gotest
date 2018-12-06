@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/lpxxn/gotest/app2_thirdlib/model"
 	"github.com/lpxxn/gotest/app2_thirdlib/utils"
@@ -8,6 +9,10 @@ import (
 )
 
 func NewUserInfo(c *gin.Context) {
+	name := c.Query("name")
+	fmt.Printf("name is ' %s '\n", name)
+	say, _ := c.GetPostForm("say")
+	fmt.Printf("say ' %s '\n", say)
 	user := newUserInfo()
 	c.JSON(http.StatusOK, user)
 }
