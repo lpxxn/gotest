@@ -77,7 +77,7 @@ func TestUserRoleList(t *testing.T) {
 	router.GET(path, UserRoleList)
 	rr, err := testutils.GetRequst(path, router)
 	a.Nil(err)
-	a.Equal(rr.Result().Status, http.StatusOK)
+	a.Equal(rr.Result().StatusCode, http.StatusOK)
 
 	roles := make([]model.UserRole, 0)
 	err = json.Unmarshal(rr.Body.Bytes(), &roles)

@@ -1,0 +1,6 @@
+mode: set
+/Users/lipeng/go/src/github.com/lpxxn/gotest/app1/api/user.go:11.36,13.2 1 1
+/Users/lipeng/go/src/github.com/lpxxn/gotest/app1/api/user.go:15.39,17.26 2 1
+/Users/lipeng/go/src/github.com/lpxxn/gotest/app1/api/user.go:20.2,20.21 1 1
+/Users/lipeng/go/src/github.com/lpxxn/gotest/app1/api/user.go:17.26,19.3 1 1
+/Users/lipeng/go/src/github.com/lpxxn/gotest/app1/api/user.go:23.60,34.2 9 1
