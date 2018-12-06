@@ -1,8 +1,8 @@
 package model
 
 type UserInfo struct {
-	Name string
-	Age  int
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
 func (u *UserInfo) GetName() string {

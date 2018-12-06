@@ -29,3 +29,19 @@ func TestNewUserInfo(t *testing.T) {
 	a.NotEqual(user.Age, 0)
 	t.Logf("%#v\n", user)
 }
+
+func TestUserInfoList(t *testing.T) {
+	a := assert.New(t)
+
+	router := gin.New()
+	const path = "/userInfoList"
+	router.GET(path, UserInfoList)
+
+	rr, err := testutils.GetRequst(path, router)
+	a.Nil(err)
+	users := make([]model.UserInfo, 0)
+
+	err = json.Unmarshal(rr.Body.Bytes(), &users)
+	a.Nil(err)
+	a.Len(users, 10)
+}

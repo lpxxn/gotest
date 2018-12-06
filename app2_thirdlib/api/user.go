@@ -22,6 +22,7 @@ func UserInfoList(c *gin.Context) {
 	for i := 0; i < 10; i++ {
 		userInfoList = append(userInfoList, newUserInfo())
 	}
+	c.JSON(http.StatusOK, userInfoList)
 }
 
 func newUserInfo() *model.UserInfo {
