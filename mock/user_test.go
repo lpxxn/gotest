@@ -26,7 +26,7 @@ func TestUser1(t *testing.T) {
 
 func TestUser2(t *testing.T) {
 	mockUser := mock_data.NewMockUser(gomock.NewController(t))
-	mockUser.EXPECT().V(1, "2")
+	mockUser.EXPECT().V(1, "2").AnyTimes()
 	// 没有 return 会返回空
 	//mockUser.EXPECT().V(1, "2").Return("a", nil)
 	var u User = mockUser
