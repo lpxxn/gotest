@@ -32,21 +32,6 @@ func (m *MockUser) EXPECT() *MockUserMockRecorder {
 	return m.recorder
 }
 
-// V mocks base method
-func (m *MockUser) V(idx int, name string) (string, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "V", idx, name)
-	ret0, _ := ret[0].(string)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// V indicates an expected call of V
-func (mr *MockUserMockRecorder) V(idx, name interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "V", reflect.TypeOf((*MockUser)(nil).V), idx, name)
-}
-
 // Name mocks base method
 func (m *MockUser) Name() string {
 	m.ctrl.T.Helper()
@@ -73,4 +58,19 @@ func (m *MockUser) SetAge(age int) bool {
 func (mr *MockUserMockRecorder) SetAge(age interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetAge", reflect.TypeOf((*MockUser)(nil).SetAge), age)
+}
+
+// V mocks base method
+func (m *MockUser) V(idx int, name string) (string, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "V", idx, name)
+	ret0, _ := ret[0].(string)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// V indicates an expected call of V
+func (mr *MockUserMockRecorder) V(idx, name interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "V", reflect.TypeOf((*MockUser)(nil).V), idx, name)
 }
